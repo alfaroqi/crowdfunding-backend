@@ -89,8 +89,6 @@ func (h *userHandler) LoginUser(c *gin.Context) {
 
 	c.JSON(http.StatusOK, response)
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 func (h *userHandler) CheckEmailAvaibility(c *gin.Context) {
 	/*	workflow :
@@ -130,7 +128,3 @@ func (h *userHandler) CheckEmailAvaibility(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 
 }
-=======
->>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09
-=======
->>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09

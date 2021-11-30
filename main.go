@@ -28,14 +28,8 @@ func main() {
 	api.POST("/users", userHandler.RegisterUser)
 	api.POST("/sessions", userHandler.LoginUser)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	api.POST("/email_checkers", userHandler.CheckEmailAvaibility)
 
-=======
->>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09
-=======
->>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09
 	router.Run(":8080")
 
 }
