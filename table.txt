@@ -1,0 +1,48 @@
+- Users
+* id  : int
+* name : varcahar
+* occupation : varchar
+* email : varchar
+* password_hash : varchar
+* avatar_file_name : varchar
+* role : varchar
+* token : varchar
+* created_at : datetime
+* updated_at : datetime
+
+- Campaigns
+* id : int
+* user_id : int
+* name :varchar
+* short_desc : varchar 
+* decription : text
+* goal_amount : int
+* current_ampount : int
+* perks : text
+* slug : varchar
+* backer_count : int
+* created_at : datetime
+* updated_at : datetime
+
+
+- Campaign Images
+* id : int
+* campaign_id : id
+* file_name : varchar
+* is_primary : boolean (tinyint)
+* created_at : datetime
+* updated_at : datetime
+
+- Transactions
+* id : int
+* campaign_id : int
+* user_id : int
+* amount : int
+* status : varchar
+* code : varchar
+* created_at : datetime
+* updated_at : datetime
+
+
+
+go get -u github.com/gin-gonic/gin@v1.7.4
