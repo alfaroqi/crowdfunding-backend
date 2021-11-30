@@ -9,6 +9,14 @@ import (
 type Service interface {
 	RegisterUser(input RegisterUserInput) (User, error)
 	LoginUser(input LoginUserInput) (User, error)
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+	IsEmailAvailable(input CheckEmailInput) (bool, error)
+=======
+>>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09
+=======
+>>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09
 }
 
 type service struct {
@@ -63,3 +71,27 @@ func (s *service) LoginUser(input LoginUserInput) (User, error) {
 
 // 1. mapping struct input ke struct User
 // 2. simpan struct User melalui repository
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+func (s *service) IsEmailAvailable(input CheckEmailInput) (bool, error) {
+	email := input.Email
+
+	user, err := s.repository.FindByEmail(email)
+	if err != nil {
+		return false, err
+	}
+
+	if user.ID == 0 {
+		return true, nil
+	}
+
+	return false, nil
+}
+
+// 1. mapping struct input ke struct User
+// 2. simpan struct User melalui repository
+=======
+>>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09
+=======
+>>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09

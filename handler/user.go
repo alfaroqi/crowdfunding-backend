@@ -89,3 +89,48 @@ func (h *userHandler) LoginUser(c *gin.Context) {
 
 	c.JSON(http.StatusOK, response)
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+func (h *userHandler) CheckEmailAvaibility(c *gin.Context) {
+	/*	workflow :
+		- ada input email dari user
+		- input email di mapping ke struct input
+		- service akan manggil repository - email sudah ada atau belum
+		- repository - db
+	*/
+	var input user.CheckEmailInput
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		errors := helper.FormatValitationError(err)
+		errorsMessage := gin.H{"errors": errors}
+
+		response := helper.ApiResponse("Email checking failed", http.StatusUnprocessableEntity, "error", errorsMessage)
+		c.JSON(http.StatusUnprocessableEntity, response)
+		return
+	}
+
+	isEmailAvailable, err := h.userService.IsEmailAvailable(input)
+	if err != nil {
+		errorsMessage := gin.H{"errors": "Server Error"}
+
+		response := helper.ApiResponse("Email checking failed", http.StatusUnprocessableEntity, "error", errorsMessage)
+		c.JSON(http.StatusUnprocessableEntity, response)
+		return
+	}
+
+	data := gin.H{"is_available": isEmailAvailable}
+
+	metaMessage := "Email has been registered"
+	if isEmailAvailable {
+		metaMessage = "Email is available"
+	}
+
+	response := helper.ApiResponse(metaMessage, http.StatusOK, "sucess", data)
+	c.JSON(http.StatusOK, response)
+
+}
+=======
+>>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09
+=======
+>>>>>>> 0c61164ccc255f9a984ef9b8004fed0f398f2c09
