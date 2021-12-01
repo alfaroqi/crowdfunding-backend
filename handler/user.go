@@ -3,6 +3,7 @@ package handler
 import (
 	"bwastartup/helper"
 	"bwastartup/user"
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -139,4 +140,43 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 		- repo update data user, simpan lokasi file gambar
 	*/
 
+	file, err := c.FormFile("avatar")
+	if err != nil {
+		response := helper.ApiResponse("Upload avatar image failed", http.StatusBadRequest, "error", nil)
+
+		c.JSON(http.StatusBadRequest, response)
+		return
+
+	}
+
+	// test pake id manual dulu, harusnya make JWT
+	userID := 1
+
+	// images/namafile.png > images/1-namafile.png "1 adalah id user"
+
+	path := fmt.Sprintf("images/%d-%s", userID, file.Filename)
+
+	err = c.SaveUploadedFile(file, path)
+	if err != nil {
+		data := gin.H{"is_uploaded": false}
+		response := helper.ApiResponse("Upload avatar image failed", http.StatusBadRequest, "error", data)
+
+		c.JSON(http.StatusBadRequest, response)
+		return
+	}
+
+	_, err = h.userService.SaveAvatar(userID, path)
+	if err != nil {
+		data := gin.H{"is_uploaded": false}
+		response := helper.ApiResponse("Upload avatar image failed", http.StatusBadRequest, "error", data)
+
+		c.JSON(http.StatusBadRequest, response)
+		return
+
+	}
+
+	data := gin.H{"is_uploaded": true}
+	response := helper.ApiResponse("Upload avatar successfully", http.StatusOK, "success", data)
+
+	c.JSON(http.StatusOK, response)
 }
