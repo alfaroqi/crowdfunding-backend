@@ -160,9 +160,8 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 		return
 
 	}
-
-	// test pake id manual dulu, harusnya make JWT
-	userID := 1
+	currentUser := c.MustGet("currentUser").(user.User)
+	userID := currentUser.ID
 
 	// images/namafile.png > images/1-namafile.png "1 adalah id user"
 
