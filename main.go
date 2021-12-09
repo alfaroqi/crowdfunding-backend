@@ -41,10 +41,11 @@ func main() {
 	api.POST("/sessions", userHandler.LoginUser)
 	api.POST("/avatars", authMiddleware(authService, userService), userHandler.UploadAvatar)
 	api.GET("/campaigns", campaignHandler.GetCampaigns)
+	api.GET("/campaigns/:id", campaignHandler.GetCampaign)
 
 	api.POST("/email_checkers", userHandler.CheckEmailAvaibility)
 
-	router.Run(":8080")
+	router.Run(":8081")
 
 }
 
