@@ -16,8 +16,8 @@ type Campaign struct {
 	GoalAmount       int
 	CurrentAmount    int
 	Slug             string
-	CreateAt         time.Time
-	UpdateAt         time.Time
+	CreatedAt        time.Time
+	UpdatedAt        time.Time
 	CampaignImages   []CampaignImage
 	User             user.User
 }
@@ -27,6 +27,6 @@ type CampaignImage struct {
 	CampaignID int
 	FileName   string
 	IsPrimary  int
-	CreateAt   time.Time
-	UpdateAt   time.Time
+	CreatedAt  time.Time
+	UpdatedAt  time.Time
 }

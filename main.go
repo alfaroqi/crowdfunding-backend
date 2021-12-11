@@ -30,6 +30,24 @@ func main() {
 	campaignService := campaign.NewService(campaignRepository)
 	authService := auth.NewService()
 
+	/* Test create campaign
+	input := campaign.CreateCampaignInput{}
+	input.Name = "Penggalangan Dana Skripsi"
+	input.ShortDescription = "Lorem ipsum"
+	input.Description = "Lorem ipsum dolor sit amet, consectetur adipiscing "
+	input.GoalAmount = 10000000
+	input.Perks = "tulisan satu, tulisan dua, dan tulisan tiga"
+
+	inputUser, _ := userService.GetUserByID(1)
+
+	input.User = inputUser
+
+	_, err = campaignService.CreateCampaign(input)
+	if err != nil {
+		panic(err)
+	}
+	*/
+
 	userHandler := handler.NewUserHandler(userService, authService)
 	campaignHandler := handler.NewCampaignHandler(campaignService)
 
@@ -39,11 +57,11 @@ func main() {
 
 	api.POST("/users", userHandler.RegisterUser)
 	api.POST("/sessions", userHandler.LoginUser)
+	api.POST("/email_checkers", userHandler.CheckEmailAvaibility)
 	api.POST("/avatars", authMiddleware(authService, userService), userHandler.UploadAvatar)
 	api.GET("/campaigns", campaignHandler.GetCampaigns)
 	api.GET("/campaigns/:id", campaignHandler.GetCampaign)
-
-	api.POST("/email_checkers", userHandler.CheckEmailAvaibility)
+	api.POST("/campaigns", authMiddleware(authService, userService), campaignHandler.CreateCampaign)
 
 	router.Run(":8081")
 
