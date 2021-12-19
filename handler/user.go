@@ -57,16 +57,6 @@ func (h *userHandler) RegisterUser(c *gin.Context) {
 
 func (h *userHandler) LoginUser(c *gin.Context) {
 
-	/* 	workflow :
-
-	1. user memasukan input(email, password)
-	2. input ditangkap handler
-	3. mapping dari input user ke input struct
-	5. input struct passing service
-	6. di service mencari dengan bantuan repository user dan email x
-	7. mencocokan password
-	*/
-
 	var input user.LoginUserInput
 
 	err := c.ShouldBindJSON(&input)
@@ -104,12 +94,7 @@ func (h *userHandler) LoginUser(c *gin.Context) {
 }
 
 func (h *userHandler) CheckEmailAvaibility(c *gin.Context) {
-	/*	workflow :
-		- ada input email dari user
-		- input email di mapping ke struct input
-		- service akan manggil repository - email sudah ada atau belum
-		- repository - db
-	*/
+
 	var input user.CheckEmailInput
 	err := c.ShouldBindJSON(&input)
 	if err != nil {
@@ -143,18 +128,11 @@ func (h *userHandler) CheckEmailAvaibility(c *gin.Context) {
 }
 
 func (h *userHandler) UploadAvatar(c *gin.Context) {
-	/*	workflow :
-		- input dari user
-		- simpan gambarnya ke folder "images/"
-		- di service kita panggil repo
-		- JWT (sementara handcode, sekaan2 user yang login ID = 1)
-		- repo ambil data user dengan ID = 1
-		- repo update data user, simpan lokasi file gambar
-	*/
 
 	file, err := c.FormFile("avatar")
 	if err != nil {
-		response := helper.ApiResponse("Upload avatar image failed", http.StatusBadRequest, "error", nil)
+		data := gin.H{"is_uploaded": false}
+		response := helper.ApiResponse("Upload avatar image failed", http.StatusBadRequest, "error", data)
 
 		c.JSON(http.StatusBadRequest, response)
 		return
@@ -162,8 +140,6 @@ func (h *userHandler) UploadAvatar(c *gin.Context) {
 	}
 	currentUser := c.MustGet("currentUser").(user.User)
 	userID := currentUser.ID
-
-	// images/namafile.png > images/1-namafile.png "1 adalah id user"
 
 	path := fmt.Sprintf("images/%d-%s", userID, file.Filename)
 
