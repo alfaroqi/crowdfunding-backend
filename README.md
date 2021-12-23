@@ -1,1 +1,3 @@
-## bwastartup - (work-in-progress)
+## bwastartup 
+
+A crowdfunding backend built with golang
