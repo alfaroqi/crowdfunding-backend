@@ -9,6 +9,7 @@ import (
 	"bwastartup/transaction"
 	"bwastartup/user"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -16,18 +17,19 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-// func init() {
+func init() {
 
-// 	err := godotenv.Load(".env")
-// 	if err != nil {
-// 		log.Fatal("Error loading .env file")
-// 	}
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
-// }
+}
 
 func main() {
 
