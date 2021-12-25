@@ -8,8 +8,6 @@ import (
 	"bwastartup/payment"
 	"bwastartup/transaction"
 	"bwastartup/user"
-	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"strings"
@@ -17,19 +15,18 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
-func init() {
+// func init() {
 
-	err := godotenv.Load(".env")
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
+// 	err := godotenv.Load(".env")
+// 	if err != nil {
+// 		log.Fatal("Error loading .env file")
+// 	}
 
-}
+// }
 
 func main() {
 	// MYSQL_URL := os.Getenv("MYSQL_URL")
@@ -40,7 +37,7 @@ func main() {
 	DB_URL := os.Getenv("DB_URL")
 
 	dsn := DB_USER + ":" + DB_PASSWORD + "@tcp(" + DB_URL + ":" + DB_PORT + ")/" + DB_NAME + "?charset=utf8mb4&parseTime=True&loc=Local"
-	fmt.Println(dsn)
+
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
