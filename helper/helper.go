@@ -1,6 +1,12 @@
 package helper
 
-import "github.com/go-playground/validator/v10"
+import (
+	"fmt"
+	"strconv"
+	"time"
+
+	"github.com/go-playground/validator/v10"
+)
 
 type Response struct {
 	Meta Meta        `json:"meta"`
@@ -35,4 +41,14 @@ func FormatValitationError(err error) []string {
 	}
 
 	return errors
+}
+
+func TimeNowMil() string {
+	timeMil := time.Now().UnixNano() / int64(time.Millisecond)
+	return strconv.Itoa(int(timeMil))
+}
+
+func GenCodeTransaction(userID int) string {
+	input := fmt.Sprintf("TRX-%s-%s", strconv.Itoa(userID), TimeNowMil())
+	return input
 }

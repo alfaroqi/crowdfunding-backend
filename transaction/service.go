@@ -2,6 +2,7 @@ package transaction
 
 import (
 	"bwastartup/campaign"
+	"bwastartup/helper"
 	"bwastartup/payment"
 	"errors"
 	"fmt"
@@ -58,6 +59,7 @@ func (s *service) CreateTransaction(input CreateTransactionInput) (Transaction, 
 	transaction.Amount = input.Amount
 	transaction.UserID = input.User.ID
 	transaction.Status = "pending"
+	transaction.Code = helper.GenCodeTransaction(input.User.ID)
 
 	newTransaction, err := s.repository.Save(transaction)
 	if err != nil {
