@@ -83,7 +83,12 @@ func FormatCampaignDetail(campaign Campaign) CampaignDetailFormatter {
 	campaignDetailFormatter.ImageURL = ""
 
 	if len(campaign.CampaignImages) > 0 {
-		campaignDetailFormatter.ImageURL = campaign.CampaignImages[0].FileName
+		for index, image := range campaign.CampaignImages {
+			if image.IsPrimary == 1 {
+				campaignDetailFormatter.ImageURL = campaign.CampaignImages[index].FileName
+			}
+		}
+
 	}
 
 	var perks []string
