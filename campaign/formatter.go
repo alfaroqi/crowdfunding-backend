@@ -9,7 +9,7 @@ type CampaignFormatter struct {
 	ShortDescription string `json:"short_description"`
 	ImageURL         string `json:"image_url"`
 	GoalAmount       int    `json:"goal_amount"`
-	CurrentAmount    int    `json:"curent_amount"`
+	CurrentAmount    int    `json:"current_amount"`
 	Slug             string `json:"slug"`
 }
 
