@@ -8,11 +8,11 @@ require github.com/gin-gonic/gin v1.7.4
 require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/gin-contrib/cors v1.3.1 // indirect
+	github.com/gin-contrib/multitemplate v0.0.0-20220102045447-8a3ac507ec70 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
 	github.com/go-playground/validator/v10 v10.4.1 // indirect
-	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/golang/protobuf v1.3.3 // indirect
 	github.com/gosimple/slug v1.11.2 // indirect
 	github.com/gosimple/unidecode v1.0.1 // indirect
