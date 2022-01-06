@@ -102,7 +102,7 @@ func main() {
 
 	router.GET("/users", userWebHandler.Index)
 
-	router.Run(":8081")
+	router.Run()
 
 }
 
