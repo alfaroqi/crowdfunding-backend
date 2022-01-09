@@ -1,14 +1,11 @@
 {{ define "content" }}
 <div class="main-content container-fluid">
   <div class="page-title">
-    <div class="row">
-      <div class="col-12 col-md-7 order-md-1 order-last">
-        <h3>Create new user</h3>
-        {{ if .Error }}
-        <div class="alert alert-danger">{{ .Error }}</div>
-        {{ end }}
-      </div>
-    </div>
+    <h3>Create new user</h3>
+    {{ if .Error }}
+    <div class="alert alert-danger">{{ .Error }}</div>
+
+    {{ end }}
   </div>
   <!-- Basic Horizontal form layout section start -->
   <section id="basic-horizontal-layouts">
@@ -72,7 +69,6 @@
                         class="form-control"
                         name="password"
                         placeholder="Input Your Password"
-                        required
                       />
                     </div>
                     <div class="col-sm-12 d-flex justify-content-end">

@@ -3,18 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard - Voler Admin Dashboard</title>
+    <title>Admin Dashboard</title>
 
     <link rel="stylesheet" href="/css/bootstrap.css" />
-
-    <link rel="stylesheet" href="/vendors/chartjs/Chart.min.css" />
 
     <link
       rel="stylesheet"
       href="/vendors/perfect-scrollbar/perfect-scrollbar.css"
     />
     <link rel="stylesheet" href="/css/app.css" />
-    <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.svg"
+      type="image/x-icon"
+    />
   </head>
 
   <body>
@@ -22,14 +24,12 @@
       <!-- Sidebar -->
       <div id="sidebar" class="active">
         <div class="sidebar-wrapper active">
-          <div class="sidebar-header">
-            <img src="/images/logo.svg" alt="" srcset="" />
-          </div>
+          <div class="sidebar-header">go-funding</div>
           <div class="sidebar-menu">
             <ul class="menu">
               <li class="sidebar-title">Main Menu</li>
 
-              <li class="sidebar-item active">
+              <li class="sidebar-item">
                 <a href="/users" class="sidebar-link">
                   <i data-feather="user" width="20"></i>
                   <span>Users</span>
@@ -100,8 +100,7 @@
                       <div>
                         <h6 class="text-bold">New Order</h6>
                         <p class="text-xs">
-                          An order made by Ahmad Saugi for product Samsung
-                          Galaxy S69
+                          New order received with the order ID: DR23948.
                         </p>
                       </div>
                     </li>
@@ -131,31 +130,22 @@
             </ul>
           </div>
         </nav>
-        <!-- Dashboard -->
-
+        <!-- End Navbar -->
         {{ template "content" .}}
         <footer>
           <div class="footer clearfix mb-0 text-muted">
             <div class="float-start">
               <p>2020 &copy; Voler</p>
             </div>
-            <div class="float-end">
-              <p>
-                Crafted with
-                <span class="text-danger"><i data-feather="heart"></i></span> by
-                <a href="http://ahmadsaugi.com">Ahmad Saugi</a>
-              </p>
-            </div>
           </div>
         </footer>
       </div>
     </div>
+
     <script src="/js/feather-icons/feather.min.js"></script>
     <script src="/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/js/app.js"></script>
 
-    <script src="/vendors/chartjs/Chart.min.js"></script>
-    <script src="/vendors/apexcharts/apexcharts.min.js"></script>
     <script src="/js/pages/dashboard.js"></script>
 
     <script src="/js/main.js"></script>

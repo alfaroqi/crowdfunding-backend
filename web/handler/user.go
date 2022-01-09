@@ -2,6 +2,8 @@ package handler
 
 import (
 	"bwastartup/user"
+	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -66,6 +68,7 @@ func (h *userHandler) Edit(c *gin.Context) {
 		c.HTML(http.StatusInternalServerError, "error.html", nil)
 		return
 	}
+
 	input := user.FormUpdateUserInput{
 		ID:         registerUser.ID,
 		Name:       registerUser.Name,
@@ -105,6 +108,46 @@ func (h *userHandler) Delete(c *gin.Context) {
 	id, _ := strconv.Atoi(idParam)
 
 	err := h.userService.DeleteUser(id)
+	if err != nil {
+		c.HTML(http.StatusInternalServerError, "error.html", nil)
+		return
+	}
+
+	c.Redirect(http.StatusFound, "/users")
+}
+
+func (h *userHandler) NewAvatar(c *gin.Context) {
+	idParam := c.Param("id")
+	id, _ := strconv.Atoi(idParam)
+
+	c.HTML(http.StatusOK, "user_avatar.html", gin.H{"ID": id})
+}
+
+func (h *userHandler) CreateAvatar(c *gin.Context) {
+	idParam := c.Param("id")
+	id, _ := strconv.Atoi(idParam)
+
+	file, err := c.FormFile("avatar")
+	if err != nil {
+		c.HTML(http.StatusInternalServerError, "error.html", nil)
+		return
+	}
+
+	userID := id
+
+	path := fmt.Sprintf("images/avatar/%d-%s", userID, file.Filename)
+
+	// static route
+
+	err = c.SaveUploadedFile(file, path)
+	log.Println("Lokasi di :", path)
+	log.Println("File :", file.Filename)
+	if err != nil {
+		c.HTML(http.StatusInternalServerError, "error.html", nil)
+		return
+	}
+
+	_, err = h.userService.SaveAvatar(userID, path)
 	if err != nil {
 		c.HTML(http.StatusInternalServerError, "error.html", nil)
 		return

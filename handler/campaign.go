@@ -60,9 +60,9 @@ func (h *campaignHandler) CreateCampaign(c *gin.Context) {
 	err := c.ShouldBindJSON(&input)
 	if err != nil {
 		errors := helper.FormatValitationError(err)
-		errorsMessage := gin.H{"errors": errors}
+		errorMessage := gin.H{"errors": errors}
 
-		response := helper.ApiResponse("Failed to create campaign", http.StatusUnprocessableEntity, "error", errorsMessage)
+		response := helper.ApiResponse("Failed to create campaign", http.StatusUnprocessableEntity, "error", errorMessage)
 		c.JSON(http.StatusUnprocessableEntity, response)
 		return
 	}
@@ -80,7 +80,6 @@ func (h *campaignHandler) CreateCampaign(c *gin.Context) {
 
 	response := helper.ApiResponse("Success to create campaign", http.StatusOK, "success", campaign.FormatCampaign(newCampaign))
 	c.JSON(http.StatusOK, response)
-
 }
 
 func (h *campaignHandler) UpdateCampaign(c *gin.Context) {
@@ -148,7 +147,7 @@ func (h *campaignHandler) UploadImage(c *gin.Context) {
 		return
 	}
 
-	path := fmt.Sprintf("images/%d-%s", userID, file.Filename)
+	path := fmt.Sprintf("images/camapaign/%d-%s", userID, file.Filename)
 
 	err = c.SaveUploadedFile(file, path)
 	if err != nil {

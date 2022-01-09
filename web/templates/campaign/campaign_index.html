@@ -1,17 +1,17 @@
 {{ define "content" }}
 <div class="main-content container-fluid">
   <div class="page-title">
-    <h3 class="mb-4">List of user</h3>
+    <h3 class="mb-4">List of Campaign</h3>
   </div>
-<section class="section">
+  <section class="section">
   <div class="row mb-4">
     <div class="col-md">
       <div class="card">
         <div
           class="card-header d-flex justify-content-between align-items-center"
         >
-          <a class="btn btn-primary" href="/users/new">
-            <i data-feather="plus-circle"></i> Add new user</a
+          <a class="btn btn-primary" href="/campaigns/new">
+            <i data-feather="plus-circle"></i> New Campaign</a
           >
 
           <div class="d-flex">
@@ -24,52 +24,36 @@
             <table class="table mb-0" id="table1">
               <thead>
                 <tr>
-                  <th>Avatar</th>
                   <th>Name</th>
-                  <th>Email</th>
-                  <th>Occupation</th>
+                  <th>Short Description</th>
+                  <th>Goal Amount</th>
                   <th></th>
                   <th></th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                {{ range .users }}
+                {{ range .campaigns }}
                 <tr>
                   <td>
-                    <img
-                      class="img-fluid img-thumbnail rounded-circle"
-                      src="{{ .AvatarFileName }}"
-                      width="60"
-                    />
+                    {{ if .CampaignImages }}
+                            <img width="60" src="/{{ (index .CampaignImages 0).FileName }}" class="img-fluid img-thumbnail">
+                    {{ end }}
                   </td>
                   <td>{{ .Name }}</td>
-                  <td>{{ .Email }}</td>
-                  <td>{{ .Occupation }}</td>
+                  <td>{{ .ShortDescription }}</td>
+                  <td>{{ .GoalAmountInIDR }}</td>
                   <td>
-                    <a href="/users/avatar/{{ .ID }}"
+                    <a href="/campsings/image/{{ .ID }}"
                       ><i data-feather="camera"></i
                     ></a>
                   </td>
                   <td>
-                    <a href="/users/edit/{{ .ID }}"
+                    <a href="/campaigns/edit/{{ .ID }}"
                       ><i data-feather="edit"></i
                     ></a>
                   </td>
-                  <td>
-                    <form
-                      action="/users/delete/{{ .ID }}"
-                      method="delete"
-                      class="d-inline"
-                    >
-                      <button
-                        class="badge bg-danger border-0"
-                        onclick="return confirm('Are you sure ?')"
-                      >
-                        <span data-feather="x-circle"></span>
-                      </button>
-                    </form>
-                  </td>
+            
                 </tr>
                 {{ end }}
               </tbody>

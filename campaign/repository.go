@@ -8,6 +8,7 @@ type Repository interface {
 	FindByID(ID int) (Campaign, error)
 	Save(camoaign Campaign) (Campaign, error)
 	Update(campaign Campaign) (Campaign, error)
+	// Delete(ID int) error
 	CreateImage(cammpaignImage CampaignImage) (CampaignImage, error)
 	MarkAllImagesAsNonPrimary(campaignID int) (bool, error)
 }
@@ -95,3 +96,13 @@ func (r *repository) MarkAllImagesAsNonPrimary(campaignID int) (bool, error) {
 
 	return true, nil
 }
+
+// func (r *repository) Delete(ID int) error {
+// 	err := r.db.Where("id = ?", ID).Delete(&Campaign{}).Error
+
+// 	if err != nil {
+// 		return err
+// 	}
+
+// 	return nil
+// }
