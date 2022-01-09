@@ -1,0 +1,103 @@
+{{ define "content" }}
+<div class="main-content container-fluid">
+  <div class="page-title">
+    <div class="row">
+      <div class="col-12 col-md-7 order-md-1 order-last">
+        {{ if .Error }}
+        <div class="alert alert-danger">{{ .Error }}</div>
+
+        {{ end }}
+
+        <h3>Create new user</h3>
+      </div>
+    </div>
+  </div>
+  <!-- Basic Horizontal form layout section start -->
+  <section id="basic-horizontal-layouts">
+    <div class="row match-height">
+      <div class="col-md-7 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <form action="/users" method="post" class="form form-horizontal">
+                <div class="form-body">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label>Name</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                      <input
+                        type="text"
+                        id="name"
+                        class="form-control"
+                        name="name"
+                        placeholder="Input Your Name"
+                        required
+                        value="{{ .Name }}"
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <label>Email</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                      <input
+                        type="email"
+                        id="email"
+                        class="form-control"
+                        name="email"
+                        placeholder="Input Your Email"
+                        value="{{ .Email }}"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <label>Occupation</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                      <input
+                        type="text"
+                        id="occupation"
+                        class="form-control"
+                        name="occupation"
+                        placeholder="Input Your Occupation"
+                        value="{{ .Occupation }}"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <label>Password</label>
+                    </div>
+                    <div class="col-md-8 form-group">
+                      <input
+                        type="password"
+                        id="password"
+                        class="form-control"
+                        name="password"
+                        placeholder="Input Your Password"
+                        required
+                      />
+                    </div>
+                    <div class="col-sm-12 d-flex justify-content-end">
+                      <button type="submit" class="btn btn-primary me-1 mb-1">
+                        Submit
+                      </button>
+                      <button
+                        type="reset"
+                        class="btn btn-light-secondary me-1 mb-1"
+                      >
+                        Reset
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- // Basic Horizontal form layout section end -->
+</div>
+
+{{ end }}

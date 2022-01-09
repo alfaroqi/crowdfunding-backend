@@ -1,4 +1,83 @@
 {{ define "content" }}
-<h4>Halaman Index</h4>
+<div class="main-content container-fluid">
+  <div class="page-title">
+    <div class="row">
+      <div class="col-12 col-md-6 order-md-1 order-last">
+        <h3>List of user</h3>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="row mb-4">
+      <div class="col-md">
+        <div class="card">
+          <div
+            class="card-header d-flex justify-content-between align-items-center"
+          >
+            <a class="btn btn-primary" href="/create">
+              <i data-feather="plus-circle"></i> Add new user</a
+            >
 
-{{ end }}
+            <div class="d-flex">
+              <i data-feather="download"></i>
+            </div>
+          </div>
+
+          <div class="card-body px-0 pb-0">
+            <div class="table-responsive">
+              <table class="table mb-0" id="table1">
+                <thead>
+                  <tr>
+                    <th>Avatar</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Occupation</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{ range .users }}
+                  <tr>
+                    <td>
+                      <img
+                        class="img-fluid img-thumbnail rounded-circle"
+                        src="{{ .AvatarFileName }}"
+                        width="60"
+                      />
+                    </td>
+                    <td>{{ .Name }}</td>
+                    <td>{{ .Email }}</td>
+                    <td>{{ .Occupation }}</td>
+                    <td>
+                      <a href="/users/edit/{{ .ID }}"
+                        ><i data-feather="edit"></i
+                      ></a>
+                    </td>
+                    <td>
+                      <form
+                        action="/users/delete/{{ .ID }}"
+                        method="delete"
+                        class="d-inline"
+                      >
+                        <button
+                          class="badge bg-danger border-0"
+                          onclick="return confirm('Are you sure ?')"
+                        >
+                          <span data-feather="x-circle"></span>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                  {{ end }}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{ end }}
+</div>
