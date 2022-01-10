@@ -87,7 +87,7 @@ func main() {
 	router.Static("/css", "./web/assets/css")
 	router.Static("/js", "./web/assets/js")
 	router.Static("/fonts", "./web/assets/fonts")
-	router.Static("/vendor", "./web/assets/vendor")
+	router.Static("/vendors", "./web/assets/vendors")
 
 	api := router.Group("/api/v1")
 
@@ -121,6 +121,7 @@ func main() {
 	router.GET("/campaigns/new", campaignWebHandler.New)
 	router.POST("/campaigns", campaignWebHandler.Create)
 	router.GET("/campaigns/image/:id", campaignWebHandler.NewImage)
+	router.POST("/campaigns/image/:id", campaignWebHandler.CreateImage)
 
 	router.Run(":8081")
 

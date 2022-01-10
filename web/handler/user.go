@@ -3,7 +3,6 @@ package handler
 import (
 	"bwastartup/user"
 	"fmt"
-	"log"
 	"net/http"
 	"strconv"
 
@@ -140,8 +139,8 @@ func (h *userHandler) CreateAvatar(c *gin.Context) {
 	// static route
 
 	err = c.SaveUploadedFile(file, path)
-	log.Println("Lokasi di :", path)
-	log.Println("File :", file.Filename)
+	// log.Println("Lokasi di :", path)
+	// log.Println("File :", file.Filename)
 	if err != nil {
 		c.HTML(http.StatusInternalServerError, "error.html", nil)
 		return
