@@ -9,6 +9,7 @@ import (
 	"bwastartup/transaction"
 	"bwastartup/user"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -21,18 +22,19 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/multitemplate"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-// func init() {
+func init() {
 
-// 	err := godotenv.Load(".env")
-// 	if err != nil {
-// 		log.Fatal("Error loading .env file")
-// 	}
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
-// }
+}
 
 func main() {
 
@@ -118,8 +120,9 @@ func main() {
 	router.GET("/campaigns", campaignWebHandler.Index)
 	router.GET("/campaigns/new", campaignWebHandler.New)
 	router.POST("/campaigns", campaignWebHandler.Create)
+	router.GET("/campaigns/image/:id", campaignWebHandler.NewImage)
 
-	router.Run()
+	router.Run(":8081")
 
 }
 
