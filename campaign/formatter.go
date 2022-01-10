@@ -1,6 +1,8 @@
 package campaign
 
-import "strings"
+import (
+	"strings"
+)
 
 type CampaignFormatter struct {
 	ID               int    `json:"id"`
@@ -90,7 +92,6 @@ func FormatCampaignDetail(campaign Campaign) CampaignDetailFormatter {
 		}
 
 	}
-
 	var perks []string
 
 	for _, perk := range strings.Split(campaign.Perks, ",") {
@@ -113,11 +114,11 @@ func FormatCampaignDetail(campaign Campaign) CampaignDetailFormatter {
 		campaignImageFormatter := CampaignImageFormatter{}
 		campaignImageFormatter.ImageURL = image.FileName
 
-		isPrimary := false
 		if image.IsPrimary == 1 {
-			isPrimary = true
+			campaignImageFormatter.IsPrimary = true
+		} else {
+			campaignImageFormatter.IsPrimary = false
 		}
-		campaignImageFormatter.IsPrimary = isPrimary
 
 		images = append(images, campaignImageFormatter)
 	}

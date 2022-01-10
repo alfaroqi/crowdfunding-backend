@@ -1,6 +1,10 @@
 package campaign
 
-import "gorm.io/gorm"
+import (
+	"log"
+
+	"gorm.io/gorm"
+)
 
 type Repository interface {
 	FindAll() ([]Campaign, error)
@@ -90,19 +94,11 @@ func (r *repository) MarkAllImagesAsNonPrimary(campaignID int) (bool, error) {
 	*/
 	err := r.db.Model(&CampaignImage{}).Where("campaign_id = ?", campaignID).Update("is_primary", false).Error
 
+	log.Println("error :", err)
+
 	if err != nil {
 		return false, err
 	}
 
 	return true, nil
 }
-
-// func (r *repository) Delete(ID int) error {
-// 	err := r.db.Where("id = ?", ID).Delete(&Campaign{}).Error
-
-// 	if err != nil {
-// 		return err
-// 	}
-
-// 	return nil
-// }
