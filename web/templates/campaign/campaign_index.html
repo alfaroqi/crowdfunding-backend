@@ -30,6 +30,7 @@
                   <th></th>
                   <th></th>
                   <th></th>
+                  <td></td>
                 </tr>
               </thead>
               <tbody>
@@ -43,6 +44,11 @@
                   <td>{{ .Name }}</td>
                   <td>{{ .ShortDescription }}</td>
                   <td>{{ .GoalAmountInIDR }}</td>
+                  <td>
+                    <a href="/campaigns/show/{{ .ID }}"
+                      ><i data-feather="book-open"></i
+                    ></a>
+                  </td>
                   <td>
                     <a href="/campaigns/image/{{ .ID }}"
                       ><i data-feather="camera"></i

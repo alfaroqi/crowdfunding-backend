@@ -111,6 +111,7 @@ func main() {
 	router.POST("/campaigns", campaignWebHandler.Create)
 	router.GET("/campaigns/edit/:id", campaignWebHandler.Edit)
 	router.POST("/campaigns/update/:id", campaignWebHandler.Update)
+	router.GET("/campaigns/show/:id", campaignWebHandler.Show)
 
 	router.Run(":8081")
 
