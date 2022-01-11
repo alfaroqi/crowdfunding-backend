@@ -1,6 +1,6 @@
 {{ define "content" }}
 <div class="main-content container-fluid">
-  <h3 class="page-title">Edit Campaign</h2>
+  <h3 class="page-title">Edit Campaign</h3>
 
   {{ if .Error }}
   <div class="alert alert-danger">{{ .Error }}</div>
@@ -9,7 +9,6 @@
   <div class="card mb-4">
     <div class="card-body">
       <form action="/campaigns/update/{{ .ID }}" method="POST">
-
         <div class="form-group">
           <label for="name">Name</label>
           <input

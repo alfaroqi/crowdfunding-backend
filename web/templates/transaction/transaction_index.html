@@ -1,0 +1,43 @@
+{{ define "content" }}
+<div class="main-content container-fluid">
+  <h3 class="page-title">All Transactions</h3>
+  <div class="card mb-4">
+    <div class="card-body">
+      <table class="table mb-0">
+        <thead class="thead-light">
+          <tr>
+            <th>Campaign Name</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range .transactions }}
+          <tr>
+            <td>{{ .Campaign.Name }}</td>
+            <td>{{ .AmountInIDR }}</td>
+            <td>
+              <span id="status-transaksi" class="badge bg-success"
+                >{{ .Status }}</span
+              >
+            </td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  // change badge color based on status of transaction (pending, success, failed) with vanilla
+  // javascript
+  const status = document.querySelectorAll("#status-transaksi");
+  status.forEach(function (item) {
+    if (item.innerHTML === "pending") {
+      item.classList.remove("bg-success");
+      item.classList.add("bg-warning");
+    }
+  });
+</script>
+{{ end }}
