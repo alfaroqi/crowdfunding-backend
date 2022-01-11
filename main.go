@@ -64,9 +64,9 @@ func main() {
 	userHandler := handler.NewUserHandler(userService, authService)
 	campaignHandler := handler.NewCampaignHandler(campaignService)
 	transactionHandler := handler.NewTransactionHandler(transactionService)
-
 	userWebHandler := webHandler.NewUserHandler(userService)
 	campaignWebHandler := webHandler.NewCampaignHandler(campaignService, userService)
+	transactionWebHandler := webHandler.NewTransactionHandler(transactionService)
 
 	router := gin.Default()
 	// router.Use(cors.Default())
@@ -86,8 +86,6 @@ func main() {
 	router.Static("/images", "./images")
 	router.Static("/css", "./web/assets/css")
 	router.Static("/js", "./web/assets/js")
-	router.Static("/fonts", "./web/assets/fonts")
-	router.Static("/vendor", "./web/assets/vendor")
 
 	api := router.Group("/api/v1")
 
@@ -120,6 +118,13 @@ func main() {
 	router.GET("/campaigns", campaignWebHandler.Index)
 	router.GET("/campaigns/new", campaignWebHandler.New)
 	router.POST("/campaigns", campaignWebHandler.Create)
+	router.GET("/campaigns/image/:id", campaignWebHandler.NewImage)
+	router.POST("/campaigns/image/:id", campaignWebHandler.CreateImage)
+	router.GET("/campaigns/edit/:id", campaignWebHandler.Edit)
+	router.POST("/campaigns/update/:id", campaignWebHandler.Update)
+	router.GET("/campaigns/show/:id", campaignWebHandler.Show)
+
+	router.GET("/transactions", transactionWebHandler.Index)
 
 	router.Run(":8081")
 

@@ -1,7 +1,7 @@
 {{ define "content" }}
 <div class="main-content container-fluid">
   <div class="page-title">
-    <h3 class="mb-4">List of Campaign</h3>
+    <h3 class="mb-4">List of Campaigns</h3>
   </div>
   <section class="section">
   <div class="row mb-4">
@@ -30,6 +30,7 @@
                   <th></th>
                   <th></th>
                   <th></th>
+                  <td></td>
                 </tr>
               </thead>
               <tbody>
@@ -44,7 +45,12 @@
                   <td>{{ .ShortDescription }}</td>
                   <td>{{ .GoalAmountInIDR }}</td>
                   <td>
-                    <a href="/campsings/image/{{ .ID }}"
+                    <a href="/campaigns/show/{{ .ID }}"
+                      ><i data-feather="book-open"></i
+                    ></a>
+                  </td>
+                  <td>
+                    <a href="/campaigns/image/{{ .ID }}"
                       ><i data-feather="camera"></i
                     ></a>
                   </td>
