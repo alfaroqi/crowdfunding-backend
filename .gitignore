@@ -1,2 +1,5 @@
 .env
-/images
+/images/avatar/*.jpg 
+/images/avatar/*.png
+/images/campaign/*.jpg
+/images/campaign/*.png
