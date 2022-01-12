@@ -5,6 +5,7 @@ import (
 	"bwastartup/helper"
 	"bwastartup/user"
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -143,17 +144,19 @@ func (h *campaignHandler) UploadImage(c *gin.Context) {
 		data := gin.H{"is_uploaded": false}
 		response := helper.ApiResponse("Failed to upload campaign image", http.StatusBadRequest, "error", data)
 
+		log.Println("Erorr di : ", err)
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
 
-	path := fmt.Sprintf("images/camapaign/%d-%s", userID, file.Filename)
+	path := fmt.Sprintf("images/campaign/%d-%s", userID, file.Filename)
 
 	err = c.SaveUploadedFile(file, path)
 	if err != nil {
 		data := gin.H{"is_uploaded": false}
 		response := helper.ApiResponse("Failed to upload campaign image", http.StatusBadRequest, "error", data)
 
+		log.Println("Erorr di : ", err)
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}
@@ -163,6 +166,7 @@ func (h *campaignHandler) UploadImage(c *gin.Context) {
 		data := gin.H{"is_uploaded": false}
 		response := helper.ApiResponse("Failed to upload campaign image", http.StatusBadRequest, "error", data)
 
+		log.Println("Erorr di : ", err)
 		c.JSON(http.StatusBadRequest, response)
 		return
 	}

@@ -84,7 +84,7 @@ func FormatCampaignDetail(campaign Campaign) CampaignDetailFormatter {
 
 	if len(campaign.CampaignImages) > 0 {
 		for index, image := range campaign.CampaignImages {
-			if image.IsPrimary == 1 {
+			if image.IsPrimary == "true" {
 				campaignDetailFormatter.ImageURL = campaign.CampaignImages[index].FileName
 			}
 		}
@@ -114,7 +114,7 @@ func FormatCampaignDetail(campaign Campaign) CampaignDetailFormatter {
 		campaignImageFormatter.ImageURL = image.FileName
 
 		isPrimary := false
-		if image.IsPrimary == 1 {
+		if image.IsPrimary == "true" {
 			isPrimary = true
 		}
 		campaignImageFormatter.IsPrimary = isPrimary
