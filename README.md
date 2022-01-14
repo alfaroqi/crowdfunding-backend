@@ -11,3 +11,4 @@ Frond-end Repository : https://github.com/alfaroqi/frontend-crowdfunding
 - [gin-contrib/sessions](https://github.com/gin-contrib/sessions)
 - [gin-contrib/cors](https://github.com/gin-contrib/cors)
 - [go-midtrans](https://github.com/veritrans/go-midtrans)
+- [admin dashboard](https://github.com/zuramai/voler)
