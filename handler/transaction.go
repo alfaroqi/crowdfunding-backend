@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"bwastartup/helper"
-	"bwastartup/transaction"
-	"bwastartup/user"
+	"backend/helper"
+	"backend/transaction"
+	"backend/user"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

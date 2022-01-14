@@ -1,13 +1,13 @@
 package main
 
 import (
-	"bwastartup/auth"
-	"bwastartup/campaign"
-	"bwastartup/handler"
-	"bwastartup/helper"
-	"bwastartup/payment"
-	"bwastartup/transaction"
-	"bwastartup/user"
+	"backend/auth"
+	"backend/campaign"
+	"backend/handler"
+	"backend/helper"
+	"backend/payment"
+	"backend/transaction"
+	"backend/user"
 	"fmt"
 	"net/http"
 	"os"
@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	webHandler "bwastartup/web/handler"
+	webHandler "backend/web/handler"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-contrib/cors"

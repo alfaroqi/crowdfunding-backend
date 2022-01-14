@@ -1,9 +1,9 @@
 package transaction
 
 import (
-	"bwastartup/campaign"
-	"bwastartup/helper"
-	"bwastartup/payment"
+	"backend/campaign"
+	"backend/helper"
+	"backend/payment"
 	"errors"
 	"fmt"
 	"strconv"

@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"bwastartup/campaign"
-	"bwastartup/helper"
-	"bwastartup/user"
+	"backend/campaign"
+	"backend/helper"
+	"backend/user"
 	"fmt"
 	"log"
 	"net/http"

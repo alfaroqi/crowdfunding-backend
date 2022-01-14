@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"bwastartup/user"
+	"backend/user"
 	"fmt"
 	"log"
 	"net/http"

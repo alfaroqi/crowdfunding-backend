@@ -1,7 +1,7 @@
 package payment
 
 import (
-	"bwastartup/user"
+	"backend/user"
 	"os"
 	"strconv"
 
