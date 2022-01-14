@@ -1,3 +1,3 @@
-## backend api go-funding
+## go-funding
 
 A crowdfunding backend built with golang
