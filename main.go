@@ -76,7 +76,7 @@ func main() {
 	router.Use(sessions.Sessions("mysession", cookieStore))
 	// disable cors
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://localhost"},
+		AllowOrigins:     []string{"*"}, //for testing only ollow all access
 		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization", "Accept"},
 		ExposeHeaders:    []string{"Content-Length"},
