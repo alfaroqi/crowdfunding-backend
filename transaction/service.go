@@ -35,7 +35,7 @@ func (s *service) GetTransactionsByCampaignID(input GetCampaignTransactionsInput
 	}
 
 	if campaign.UserID != input.User.ID {
-		return []Transaction{}, errors.New("Not an owner of the campaign")
+		return []Transaction{}, errors.New("not an owner of the campaign")
 	}
 
 	transactions, err := s.repository.GetByCampaignID(input.ID)

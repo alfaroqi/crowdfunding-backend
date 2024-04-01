@@ -7,3 +7,6 @@ images/avatar/*.jpg
 # don't include pictures of jpg folder images/campaign
 images/campaign/*.png
 images/campaign/*.jpg
+
+# config code editor
+*.vscode
